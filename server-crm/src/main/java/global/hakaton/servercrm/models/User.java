@@ -10,6 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +19,9 @@ public class User {
     private String username;
     private String email;
 
-    @OneToOne(mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     private List<Project> activity;
+
+    @OneToMany(mappedBy = "user")
+    private List<TeamMembers> teams;
 }
