@@ -1,7 +1,6 @@
 import { ConfigProvider, theme } from "antd";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LoginForm from "./components/forms/LoginForm";
-
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/routes"
 
 export default function App() {
     return (
@@ -13,11 +12,7 @@ export default function App() {
                 },
             }}
         >
-            <BrowserRouter>
-                <Routes>
-                    <Route path={"/"} element={<LoginForm />}/>
-                </Routes>
-            </BrowserRouter>
+            <RouterProvider router={router} />
         </ConfigProvider>
     )
 } 
