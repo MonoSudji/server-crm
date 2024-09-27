@@ -1,6 +1,6 @@
 import { ConfigProvider, theme } from "antd";
 import { RouterProvider } from "react-router-dom";
-import { router } from "./routes/routes"
+import { router } from "./routes/routes";
 
 export default function App() {
     return (
@@ -8,7 +8,7 @@ export default function App() {
             theme={{
                 algorithm: theme.darkAlgorithm,
                 token: {
-                    colorBgContainer: '#17191b',
+                    colorBgContainer: "#17191b",
                 },
             }}
         >

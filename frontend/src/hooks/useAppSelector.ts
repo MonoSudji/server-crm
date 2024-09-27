@@ -1,5 +1,5 @@
-import { useSelector, TypedUseSelectorHook } from 'react-redux';
-import { RootState } from '../store/store';
+import { useSelector, TypedUseSelectorHook } from "react-redux";
+import { RootState } from "../store/store";
 
 /*
 * Хук для получения состояния приложения с типизацией.
