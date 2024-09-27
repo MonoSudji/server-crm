@@ -3,6 +3,7 @@ import { RoutesNames } from "../utils/routes-names";
 import ReigstrationPage from "../pages/ReigstrationPage";
 import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
+import ProfilePage from "../pages/ProfilePage";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
   },
   {
     path: RoutesNames.PROFILE,
-    element: <div>profile</div>,
+    element: <ProfilePage />,
   },
   {
     path: RoutesNames.MY_TASK,

@@ -6,7 +6,7 @@ const { Content } = Layout;
 
 const RegistrationPage: React.FC = () => {
     return (
-        <Layout className="mt-20">
+        <Layout >
             <Content className="p-[30px]">
                 <div className="w-full">
                     <RegistrationForm />

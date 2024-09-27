@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, theme } from "antd";
 import { Link } from "react-router-dom";
 
 interface ValuesI {
@@ -8,17 +8,20 @@ interface ValuesI {
 }
 
 const LoginForm: React.FC = () => {
+    const {token} = theme.useToken()
+
     const onFinish = ({ email, password }: ValuesI) => {
         console.log("Login form values: ", email, password);
     };
 
     return (
-        <div className="flex justify-center items-center bg-gray-100">
+        <div className={`flex justify-center items-cente`}>
             <Form
+                style={{backgroundColor: token.colorBgBase}} 
                 name="login"
                 layout="vertical"
                 onFinish={onFinish}
-                className="bg-white p-6 shadow-lg rounded-lg w-full max-w-md"
+                className="p-6 shadow-lg rounded-lg w-full max-w-md"
             >
                 <h2 className="text-2xl font-bold text-center mb-6">Sign in</h2>
 
