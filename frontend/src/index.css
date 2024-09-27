@@ -2,17 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
-
-body,
-html {
-  background: #1e2022;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+* {
+    box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
@@ -27,4 +24,9 @@ a {
 
 a:hover {
   color: #7cc0fb;
+body {
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

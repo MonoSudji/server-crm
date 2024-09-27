@@ -6,10 +6,7 @@ function App() {
   return (
     <ConfigProvider
       theme={{
-        algorithm: theme.darkAlgorithm,
-        token: {
-          colorBgContainer: "#17191b",
-        },
+        algorithm: theme.defaultAlgorithm,
       }}
     >
       <RouterProvider router={router} />
