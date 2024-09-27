@@ -1,12 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import { RoutesNames } from "../utils/routes-names"
+import { RoutesNames } from "../utils/routes-names";
 import ReigstrationPage from "../pages/ReigstrationPage";
 import LoginPage from "../pages/LoginPage";
+import HomePage from "../pages/HomePage";
 
 export const router = createBrowserRouter([
   {
     path: RoutesNames.HOME,
-    element: <div>homepage</div>,
+    element: <HomePage />,
   },
   {
     path: RoutesNames.LOGIN,

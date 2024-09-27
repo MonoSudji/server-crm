@@ -1,0 +1,17 @@
+import { FieldTimeOutlined } from "@ant-design/icons";
+import DeskList from "./DeskList";
+
+const RecentDesks = () => {
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="flex gap-2 text-white">
+        <FieldTimeOutlined />
+        Недавно просмотренные
+      </div>
+
+      <DeskList type="recent" />
+    </div>
+  );
+};
+
+export default RecentDesks;
