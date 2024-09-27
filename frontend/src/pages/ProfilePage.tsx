@@ -1,27 +1,26 @@
 import { useState } from 'react';
-import { Avatar, Button, Card, Form, Input, Radio, Select, Upload } from 'antd';
+import { Avatar, Button, Card, Form, Input, Radio, Select, theme, Upload } from 'antd';
 import { LockOutlined, MailOutlined, CalendarOutlined, UploadOutlined } from '@ant-design/icons';
 
 
 const { Option } = Select;
 
 const SettingsCard = () => {
-    const [theme, setTheme] = useState('dark');
     const [panelTransparency, setPanelTransparency] = useState('transparent');
     const [language, setLanguage] = useState('Русский');
+    const { token } = theme.useToken();
   
     return (
-        <div className="rounded-lg p-0 shadow-lg w-[50%] ">
+        <div className="rounded-lg p-0 shadow-lg w-[50%]">
             <Card
                 className=" text-white p-0  h-[100%]"
                 title="Внешний вид системы"
                 bordered={false}
+                style={{backgroundColor: token.colorBgBase}}
             >
                 <div className="mb-4">
                 <span className="block mb-2">Выберите цветовую схему:</span>
                     <Radio.Group
-                        value={theme}
-                        onChange={(e) => setTheme(e.target.value)}
                         className="space-x-4"
                     >
                         <Radio.Button value="dark" className="text-white">
@@ -91,8 +90,10 @@ const SettingsCard = () => {
 
 
   const UserCard = () => {
+    const { token } = theme.useToken();
     return (
       <Card
+        style={{backgroundColor: token.colorBgBase}}
         title="Профиль "
         className="w-[30%] mr-10 text-white rounded-lg shadow-lg"
         bordered={false}
