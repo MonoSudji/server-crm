@@ -7,6 +7,10 @@ html, body, #root {
     width: 100%;
     margin: 0;
     padding: 0;
+
+	margin: 0;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 * {
     box-sizing: border-box;

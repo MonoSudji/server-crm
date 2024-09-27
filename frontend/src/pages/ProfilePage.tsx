@@ -94,7 +94,7 @@ const SettingsCard = () => {
     return (
       <Card
         title="Профиль "
-        className="w-[30%] mr-10 bg-[#17191b] text-white rounded-lg shadow-lg"
+        className="w-[30%] mr-10 text-white rounded-lg shadow-lg"
         bordered={false}
       >
         <div className="text-center mb-6">
