@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
+import { theme } from "antd";
 
 interface ValuesI {
     email: string;
@@ -9,6 +10,8 @@ interface ValuesI {
 }
 
 const RegistrationForm: React.FC = () => {
+    const { token } = theme.useToken();
+    
     const onFinish = ({ email, password, confirmPassword }: ValuesI) => {
         console.log(
             "Registration form values: ",
@@ -19,12 +22,13 @@ const RegistrationForm: React.FC = () => {
     };
 
     return (
-        <div className="flex justify-center bg-gray-100">
+        <div className="flex justify-center">
             <Form
+                style={{backgroundColor: token.colorBgBase}} 
                 name="register"
                 layout="vertical"
                 onFinish={onFinish}
-                className="bg-white p-6 shadow-lg rounded-lg w-full max-w-md"
+                className="p-6 shadow-lg rounded-lg w-full max-w-md"
             >
                 <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
 
