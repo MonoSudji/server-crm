@@ -92,10 +92,11 @@ const SettingsCard = () => {
   const UserCard = () => {
     const { token } = theme.useToken();
     return (
+      <div className='rounded-lg shadow-lg w-[30%] mr-10'>
       <Card
         style={{backgroundColor: token.colorBgBase}}
         title="Профиль "
-        className="w-[30%] mr-10 text-white rounded-lg shadow-lg"
+        className="w-[100%] text-white rounded-lg shadow-lg h-full "
         bordered={false}
       >
         <div className="text-center mb-6">
@@ -147,6 +148,8 @@ const SettingsCard = () => {
           </Button>
         </div>
       </Card>
+      </div>
+      
     );
   };
 
