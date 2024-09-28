@@ -1,18 +1,18 @@
 import { $authHost } from "./index/settings"
 
-interface IAuthRequest {
+export interface AuthRequestI {
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
-export const authRequest = {
-  registration: async (data: IAuthRequest) => {
+export const authService = {
+  registration: async (data: AuthRequestI) => {
     const res = await $authHost.post("auth/register", data);
     return res.data;
   },
-  login: async (data: IAuthRequest) => {
+  login: async (data: AuthRequestI) => {
     const res = await $authHost.post("auth/login", data);
     return res.data;
   }
 };
+
