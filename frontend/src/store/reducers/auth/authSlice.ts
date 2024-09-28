@@ -1,21 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { authService } from "../../../api/authService"
-import { AuthRequestI } from '../../../api/authService';
 import { jwtDecode } from "jwt-decode";
-
-interface AuthStateI {
-    loading: boolean;
-    email: string;
-    userName: string;
-    isAuth: boolean;
-    token: string;
-}
-
-interface JwtData {
-    email: string;
-    userName: string;
-    token: string;
-}
+import { JwtData, AuthStateI, AuthRequestI } from '../../../models/user-model';
 
 const AuthState: AuthStateI = {
     loading: false,
@@ -32,7 +18,7 @@ const authSlice = createSlice({
         registration: create.asyncThunk<JwtData, AuthRequestI, { rejectValue: string}>(
             async (data, {rejectWithValue}) => {
                 try {
-                    const token : string = await authService.registration(data);
+                    const { token } = await authService.registration(data);
                     const newData: JwtData = jwtDecode(token);
                     return {...newData, token};
                 } catch {
@@ -49,7 +35,6 @@ const authSlice = createSlice({
                     state.email = email;
                     state.userName = userName;
                     state.token = token;
-                    // .....
                 },
                 rejected: (state, action) => {
                     state.loading = false;
@@ -61,7 +46,7 @@ const authSlice = createSlice({
         login: create.asyncThunk<JwtData, AuthRequestI, { rejectValue: string}>(
             async (data, {rejectWithValue}) => {
                 try {
-                    const token : string = await authService.login(data);
+                    const { token }  = await authService.login(data);
                     const newData: JwtData = jwtDecode(token);
                     return {...newData, token};
                 } catch {
