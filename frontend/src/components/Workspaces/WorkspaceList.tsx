@@ -13,13 +13,13 @@ const WorkspaceList: FC<IWorkSpaceList> = ({ onOpenModal }) => {
   return (
     <div className="flex flex-col gap-12 w-full">
       {project.map((ss) => (
-        <>
+        <div className="flex flex-col gap-6">
           <WorkspaceControls name={ss.name} />
           <WorkspaceListItem
             id={ss.id!}
             onOpenModal={() => onOpenModal(ss.id!)}
           />
-        </>
+        </div>
       ))}
     </div>
   );
