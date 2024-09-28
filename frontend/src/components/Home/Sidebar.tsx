@@ -1,21 +1,15 @@
 import { AppstoreAddOutlined, HomeOutlined } from "@ant-design/icons";
-import { Divider, Menu, theme } from "antd";
-import { useAppSelector } from "../../hooks/useAppSelector";
+import { Divider, Menu } from "antd";
 
 const Sidebar = () => {
-  const themeIsDark = useAppSelector((state) => state.settings.themeIsDark);
-
-  const { token } = theme.useToken();
-
   return (
-    <div className="w-[15%] min-h-screen">
+    <div className="w-full max-w-[256px] min-h-screen">
       <Menu
         defaultSelectedKeys={["1"]}
         style={{
           height: "100%",
           borderRight: 0,
           padding: "12px",
-          backgroundColor: token.colorBgBase,
         }}
       >
         <Menu.Item key="1" style={{ display: "flex", gap: "12px" }}>
