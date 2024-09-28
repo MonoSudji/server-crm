@@ -1,18 +1,17 @@
-// Интерфейс пользователя
-export interface IUser {
-  username: string;
-  email: string;
-}
-
 // Интерфейс ответа от сервера при авторизации
 export interface IAuthServerResponse {
   token: string;
 }
 
-// Интерфейс запроса для аутентификации
-export interface AuthRequestI {
+// Интерфейс пользователя
+export interface IUser {
   email: string;
   password: string;
+}
+
+// Интерфейс запроса для аутентификации
+export interface AuthRequestI extends IUser {
+  username: string;
 }
 
 // Интерфейс состояния аутентификации
@@ -30,3 +29,6 @@ export interface JwtData {
   userName: string;
   token: string;
 }
+
+
+

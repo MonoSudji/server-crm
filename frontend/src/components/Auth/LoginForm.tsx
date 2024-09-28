@@ -1,17 +1,17 @@
 import React from "react";
 import { Form, Input, Button, theme } from "antd";
 import { Link } from "react-router-dom";
+import { login } from "../../store/reducers/auth/authSlice";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { IUser } from "../../models/user-model";
 
-interface ValuesI {
-    email: string;
-    password: string;
-}
 
 const LoginForm: React.FC = () => {
-    const {token} = theme.useToken()
-    
-    const onFinish = ({ email, password }: ValuesI) => {
-        console.log("Login form values: ", email, password);
+    const {token} = theme.useToken();
+    const dispatch = useAppDispatch();
+
+    const onFinish = async (data: IUser) => {
+        await dispatch(login(data));
     };
 
     return (
@@ -23,34 +23,34 @@ const LoginForm: React.FC = () => {
                 onFinish={onFinish}
                 className="p-6 shadow-lg rounded-lg w-full max-w-md"
             >
-                <h2 className="text-2xl font-bold text-center mb-6">Sign in</h2>
+                <h2 className="text-2xl font-bold text-center mb-6">Войти</h2>
 
                 <Form.Item
                     name="email"
-                    label="Email"
+                    label="Электронная почта"
                     rules={[
-                        { required: true, message: "Please enter your email!" },
+                        { required: true, message: "Пожалуйста, введите вашу электронную почту!" },
                     ]}
                 >
                     <Input
                         type="email"
-                        placeholder="Enter your email"
+                        placeholder="Введите вашу электронную почту"
                         className="border rounded px-3 py-2 w-full"
                     />
                 </Form.Item>
 
                 <Form.Item
                     name="password"
-                    label="Password"
+                    label="Пароль"
                     rules={[
                         {
                             required: true,
-                            message: "Please enter your password!",
+                            message: "Пожалуйста, введите ваш пароль!",
                         },
                     ]}
                 >
                     <Input.Password
-                        placeholder="Enter your password"
+                        placeholder="Введите ваш пароль"
                         className="border rounded px-3 py-2 w-full"
                     />
                 </Form.Item>
@@ -62,14 +62,14 @@ const LoginForm: React.FC = () => {
                         block
                         className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
                     >
-                        Sign in
+                        Войти
                     </Button>
                 </Form.Item>
 
                 <p className="text-center">
-                    Don’t have an account?{" "}
+                    Нет аккаунта?{" "}
                     <Link to="/registration" className="text-blue-600">
-                        Sign up
+                        Зарегистрироваться
                     </Link>
                 </p>
             </Form>
