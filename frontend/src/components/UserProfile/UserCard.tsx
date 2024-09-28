@@ -4,7 +4,7 @@ import { LockOutlined, MailOutlined, CalendarOutlined } from "@ant-design/icons"
 const UserCard = () => {
     const { token } = theme.useToken();
     return (
-        <div className="rounded-lg shadow-lg w-[30%] mr-10">
+        <div className="rounded-lg shadow-lg w-[30%]">
             <Card
                 style={{ backgroundColor: token.colorBgBase }}
                 title="Профиль "
@@ -38,7 +38,7 @@ const UserCard = () => {
                         ]}
                         className="w-[80%]"
                     >
-                        <Input defaultValue="USERNAME" />
+                        <Input defaultValue="USERNAME" size="large"/>
                     </Form.Item>
 
                     <Form.Item className="w-[80%]">
