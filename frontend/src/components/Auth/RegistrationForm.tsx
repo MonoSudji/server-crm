@@ -2,19 +2,24 @@ import React from "react";
 import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import { theme } from "antd";
+import { AuthRequestI } from "../../models/user-model";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { login } from "../../store/reducers/auth/authSlice";
 
-interface ValuesI {
-    email: string;
-    password: string;
+interface IRegistrationForm extends AuthRequestI{
     confirmPassword: string;
 }
 
 const RegistrationForm: React.FC = () => {
     const { token } = theme.useToken();
-    const form = Form.useForm()
+    const form = Form.useForm();
+    const dispatch = useAppDispatch();
     
-    const onFinish = (values: ValuesI) => {
-        
+    const onFinish = async ({password, confirmPassword, email, username}: IRegistrationForm) => {
+        if (password === confirmPassword) {
+            const data: AuthRequestI = {email, username, password};
+            await dispatch(login(data));
+        }
     };
 
     return (
@@ -27,44 +32,58 @@ const RegistrationForm: React.FC = () => {
                 className="p-6 shadow-lg rounded-lg w-full max-w-md"
                 onFinish={onFinish}
             >
-                <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
+                <h2 className="text-2xl font-bold text-center mb-6">Регистрация</h2>
 
                 <Form.Item
                     name="email"
-                    label="Email"
+                    label="Электронная почта"
                     rules={[
-                        { required: true, message: "Please enter your email!" },
+                        { required: true, message: "Пожалуйста, введите вашу электронную почту!" },
                     ]}
                 >
                     <Input
                         type="email"
-                        placeholder="Enter your email"
+                        placeholder="Введите вашу электронную почту"
+                        className="border rounded px-3 py-2 w-full"
+                    />
+                </Form.Item>
+
+                <Form.Item
+                    name="username"
+                    label="Имя пользователя"
+                    rules={[
+                        { required: true, message: "Пожалуйста, введите имя пользователя!" },
+                    ]}
+                >
+                    <Input
+                        type="email"
+                        placeholder="Введите имя пользователя"
                         className="border rounded px-3 py-2 w-full"
                     />
                 </Form.Item>
 
                 <Form.Item
                     name="password"
-                    label="Password"
+                    label="Пароль"
                     rules={[
                         {
-                            required: true, message: "Please enter your password!",
+                            required: true, message: "Пожалуйста, введите ваш пароль!",
                         },
                     ]}
                 >
                     <Input.Password
-                        placeholder="Enter your password"
+                        placeholder="Введите ваш пароль"
                         className="border rounded px-3 py-2 w-full"
                     />
                 </Form.Item>
 
                 <Form.Item
                     name="confirmPassword"
-                    label="Confirm Password"
+                    label="Подтвердите пароль"
                     rules={[
                         {   
                             required: true,
-                            message: "Please confirm your password!",
+                            message: "Пожалуйста, подтвердите ваш пароль!",
                         },
                         ({ getFieldValue }) => ({
                             validator(_, value) {
@@ -75,14 +94,14 @@ const RegistrationForm: React.FC = () => {
                                     return Promise.resolve();
                                 }
                                 return Promise.reject(
-                                    new Error("Passwords do not match!")
+                                    new Error("Пароли не совпадают!")
                                 );
                             },
                         }),
                     ]}
                 >
                     <Input.Password
-                        placeholder="Confirm your password"
+                        placeholder="Подтвердите ваш пароль"
                         className="border rounded px-3 py-2 w-full"
                     />
                 </Form.Item>
@@ -94,13 +113,13 @@ const RegistrationForm: React.FC = () => {
                         block
                         className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
                     >
-                        Register
+                        Зарегистрироваться
                     </Button>
                 </Form.Item>
                 <p className="text-center">
-                    Do you have account?{" "}
+                    Уже есть аккаунт?{" "}
                     <Link to="/login" className="text-blue-600">
-                        Sign in
+                        Войти
                     </Link>
                 </p>
             </Form>

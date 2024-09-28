@@ -1,7 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit'
 import { authService } from "../../../api/authService"
 import { jwtDecode } from "jwt-decode";
-import { JwtData, AuthStateI, AuthRequestI } from '../../../models/user-model';
+import { JwtData, AuthStateI, AuthRequestI, IUser } from '../../../models/user-model';
+import { asyncThunkCreator, buildCreateSlice} from "@reduxjs/toolkit";
+
+const createSliceWithThunks = buildCreateSlice({
+    creators: { asyncThunk: asyncThunkCreator },
+});
 
 const AuthState: AuthStateI = {
     loading: false,
@@ -11,7 +15,7 @@ const AuthState: AuthStateI = {
     token: "",
 }
 
-const authSlice = createSlice({
+const authSlice = createSliceWithThunks({
     name: 'auth',
     initialState: AuthState,
     reducers: (create) => ({
@@ -43,7 +47,7 @@ const authSlice = createSlice({
                 },
             }
         ),
-        login: create.asyncThunk<JwtData, AuthRequestI, { rejectValue: string}>(
+        login: create.asyncThunk<JwtData, IUser, { rejectValue: string}>(
             async (data, {rejectWithValue}) => {
                 try {
                     const { token }  = await authService.login(data);
@@ -76,3 +80,4 @@ const authSlice = createSlice({
 
 // export const { } = authSlice.actions
 export default authSlice.reducer;
+export const { login, registration } = authSlice.actions;
