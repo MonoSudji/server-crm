@@ -2,18 +2,19 @@ import { useParams } from "react-router-dom";
 import Sidebar from "../components/Home/Sidebar";
 import Navbar from "../components/Home/Navbar";
 import { useEffect } from "react";
-import axios from "axios";
+import { useAppDispatch } from "../hooks/useAppDispatch";
+import { boardAction } from "../store/reducers/board/boardSlice";
+import { useAppSelector } from "../hooks/useAppSelector";
 
 const BoardPage = () => {
   const { id } = useParams();
-
-  const getBoardById = async () => {
-    const { data } = await axios.get(`http://localhost:8080/api/board/${id}`);
-    console.log(data);
-  };
+  const { board } = useAppSelector((state) => state.boards);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getBoardById();
+    if (id) {
+      dispatch(boardAction.getBoardById(Number(id)));
+    }
   }, []);
 
   return (
@@ -22,7 +23,7 @@ const BoardPage = () => {
       <section className="flex">
         <Sidebar />
         <div className="w-full">
-          <div className="border border-white w-full h-16">dwdwdw</div>
+          <div className="border border-white w-full h-16">{board.name}</div>
         </div>
       </section>
     </div>

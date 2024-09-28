@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import { ICard } from "../models/card-model";
 import { $authHost } from "./index/settings";
 
@@ -7,9 +8,9 @@ const cardsService = {
     return response.data;
   },
 
-  getCard: async (id: number): Promise<ICard> => {
+  getCard: async (id: number): Promise<AxiosResponse<ICard>> => {
     const response = await $authHost.get<ICard>(`/cards/${id}`);
-    return response.data;
+    return response;
   },
 
   createCard: async (cardData: ICard): Promise<ICard> => {
