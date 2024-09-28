@@ -4,6 +4,7 @@ import ReigstrationPage from "../pages/ReigstrationPage";
 import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 import ProfilePage from "../pages/ProfilePage";
+import BoardPage from "../pages/BoardPage";
 
 export const router = createBrowserRouter([
   {
@@ -27,13 +28,11 @@ export const router = createBrowserRouter([
     element: <div>my-task</div>,
   },
   {
-    path: RoutesNames.PROJECT,
-    element: <div>project</div>,
-    children: [
-      {
-        path: `${RoutesNames.PROJECT}/:id`,
-        element: <div>project</div>,
-      },
-    ],
+    path: `${RoutesNames.PROJECT}`,
+    element: <HomePage />,
+  },
+  {
+    path: `${RoutesNames.PROJECT}/:id`,
+    element: <BoardPage />,
   },
 ]);

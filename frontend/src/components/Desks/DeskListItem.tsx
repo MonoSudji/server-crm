@@ -1,6 +1,15 @@
-const DeskListItem = () => {
+import { FC } from "react";
+
+interface IDeskListItem {
+  onClick: () => void;
+}
+
+const DeskListItem: FC<IDeskListItem> = ({ onClick }) => {
   return (
-    <div className="relative w-44 h-24 bg-slate-500 rounded-sm p-1">
+    <div
+      onClick={onClick}
+      className="relative text-white cursor-pointer w-44 h-24 bg-indigo-600  p-1 rounded-md"
+    >
       <span className="absolute right-2">Доска</span>
       <img src="" alt="" />
     </div>

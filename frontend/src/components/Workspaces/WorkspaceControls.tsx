@@ -3,13 +3,18 @@ import {
   SettingOutlined,
   TeamOutlined,
 } from "@ant-design/icons";
+import { FC } from "react";
 
-const WorkspaceControls = () => {
+interface IWorkSpaceControls {
+  name: string;
+}
+
+const WorkspaceControls: FC<IWorkSpaceControls> = ({ name }) => {
   return (
     <div className="flex gap-4 justify-between">
       <div className="flex gap-2 items-center">
         <div className="w-8 h-8 bg-blue-400 rounded-sm"></div>
-        <p className="text-white">ByteSpace</p>
+        <p className="text-white">{name}</p>
       </div>
 
       <div className="flex gap-4">
