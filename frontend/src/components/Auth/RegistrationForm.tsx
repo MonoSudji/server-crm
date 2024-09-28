@@ -11,24 +11,21 @@ interface ValuesI {
 
 const RegistrationForm: React.FC = () => {
     const { token } = theme.useToken();
+    const form = Form.useForm()
     
-    const onFinish = ({ email, password, confirmPassword }: ValuesI) => {
-        console.log(
-            "Registration form values: ",
-            email,
-            password,
-            confirmPassword
-        );
+    const onFinish = (values: ValuesI) => {
+        
     };
 
     return (
         <div className="flex justify-center">
             <Form
+                form={form[0]}
                 style={{backgroundColor: token.colorBgBase}} 
                 name="register"
                 layout="vertical"
-                onFinish={onFinish}
                 className="p-6 shadow-lg rounded-lg w-full max-w-md"
+                onFinish={onFinish}
             >
                 <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
 
