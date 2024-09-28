@@ -1,0 +1,6 @@
+####Инструкция 
+Ссылка на target: https://drive.google.com/file/d/12Fk7GrqGXbFj1dKvgtrkiaOR5qjwl29f/view?usp=drive_link
+##1.скачать архив с target и распаковать 
+##2.поместите target в один каталог с docker и docker-compose
+##3.запустите docker build app .
+##4.docker compose up

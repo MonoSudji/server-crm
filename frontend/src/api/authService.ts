@@ -1,18 +1,18 @@
-import { $authHost, $host } from "./settings";
+import { $authHost } from "./index/settings"
 
-interface IRegisterRequest {
+interface IAuthRequest {
   email: string;
   password: string;
   confirmPassword: string;
 }
 
-interface ILoginRequest {
-  email: string;
-  password: string;
-}
-
 export const authRequest = {
-  post: (url: string, data: IRegisterRequest | ILoginRequest) => {
-    return $host.post(url, data);
+  registration: async (data: IAuthRequest) => {
+    const res = await $authHost.post("auth/register", data);
+    return res.data;
   },
+  login: async (data: IAuthRequest) => {
+    const res = await $authHost.post("auth/login", data);
+    return res.data;
+  }
 };
