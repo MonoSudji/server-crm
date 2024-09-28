@@ -2,8 +2,8 @@ import { FC } from "react";
 import { IBoard } from "../../models/board-model";
 
 interface IDeskListItem {
-  name: IBoard["name"];
-  onClick: () => void;
+  name?: IBoard["name"];
+  onClick?: () => void;
 }
 
 const DeskListItem: FC<IDeskListItem> = ({ onClick, name }) => {
