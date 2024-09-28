@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <div className="flex flex-col">
       <Navbar />
-      <section className="flex gap-2">
+      <section className="flex">
         <Sidebar />
         <Main />
       </section>

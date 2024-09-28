@@ -2,25 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body,
-#root {
-  height: 100%;
-  width: 100%;
+* {
   margin: 0;
   padding: 0;
-
-  margin: 0;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-* {
   box-sizing: border-box;
 }
 
-body {
-  background-color: #f3f4f6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body,
+html {
+  background: #1e2022;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+a {
+  color: #dfe3e1;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #7cc0fb;
 }

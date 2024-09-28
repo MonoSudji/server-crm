@@ -2,7 +2,7 @@ import WorkspaceListItem from "./WorkspaceListItem";
 
 const WorkspaceList = () => {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 w-full">
       <WorkspaceListItem />
       <WorkspaceListItem />
       <WorkspaceListItem />

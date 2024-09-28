@@ -3,10 +3,15 @@ import { Divider, Menu } from "antd";
 
 const Sidebar = () => {
   return (
-    <div className="w-[20%] min-h-screen flex ">
+    <div className="w-[15%] min-h-screen">
       <Menu
         defaultSelectedKeys={["1"]}
-        style={{ height: "100%", borderRight: 0, padding: "12px" }}
+        style={{
+          height: "100%",
+          borderRight: 0,
+          padding: "12px",
+          backgroundColor: "#222",
+        }}
       >
         <Menu.Item key="1" style={{ display: "flex", gap: "12px" }}>
           <AppstoreAddOutlined /> <span>Доски</span>

@@ -4,7 +4,7 @@ import DeskList from "./DeskList";
 const RecentDesks = () => {
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex gap-2 text-white">
+      <div className="flex gap-2 flex-wrap text-white">
         <FieldTimeOutlined />
         Недавно просмотренные
       </div>

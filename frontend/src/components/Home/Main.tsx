@@ -3,7 +3,7 @@ import RecentDesks from "../Desks/RecentDesks";
 
 const Main = () => {
   return (
-    <main className="flex flex-col gap-10 items-center py-4 px-32 overflow-scroll">
+    <main className="w-[80%] flex flex-col gap-10 items-center py-4 px-28 overflow-scroll">
       <RecentDesks />
       <MainDesks />
     </main>
