@@ -31,19 +31,10 @@ public class UserService {
     }
 
     public UserDto registerUser(UserDto userDto) {
-        if (userDto.getPassword() == null || userDto.getPassword().isEmpty()) {
-            throw new IllegalArgumentException("Password cannot be null or empty");
-        }
-
-        User user = new User();
-        user.setUsername(userDto.getUsername());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(passwordEncoder.encode(userDto.getPassword())); // Кодирование пароля
-
-
+        User user = userMapper.toEntity(userDto);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser = userRepository.save(user);
-
-        return new UserDto(savedUser.getId(), savedUser.getUsername(), savedUser.getEmail(), null);
+        return userMapper.toDto(savedUser);
     }
 
     public String authenticateUser(LoginCredentials loginCredentials) {

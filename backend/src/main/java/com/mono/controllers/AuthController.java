@@ -1,15 +1,24 @@
 package com.mono.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.mono.dto.UserDto;
 import com.mono.models.LoginCredentials;
 import com.mono.models.User;
 import com.mono.security.JWTUtil;
 import com.mono.service.PasswordResetService;
 import com.mono.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -27,17 +36,18 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UserDto> registerUser(@RequestBody UserDto userDto) {
-
-        if (userDto.getPassword() == null || userDto.getPassword().isEmpty()) {
-            throw new IllegalArgumentException("Password cannot be null or empty");
-        }
-
+    public ResponseEntity<Map<String, Object>> registerUser(@RequestBody UserDto userDto) {
         UserDto createdUser = userService.registerUser(userDto);
-        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
-    }
-
-
+        
+        String token = jwtUtil.generateToken(createdUser.getUsername());
+    
+        Map<String, Object> response = new HashMap<>();
+        response.put("user", createdUser);
+        response.put("token", token);
+    
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }    
+    
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody LoginCredentials loginCredentials) {
         String token = userService.authenticateUser(loginCredentials);

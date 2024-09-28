@@ -16,8 +16,8 @@ public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    private String background = "#fff";
 
     @ManyToOne
     @JoinColumn(name = "board_id")

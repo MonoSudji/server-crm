@@ -12,7 +12,7 @@ import java.util.Map;
 @Component
 public class JWTUtil {
 
-    private final String SECRET_KEY = "vs88NbzXBkhOpHd4HrTS4KnovntH/5ZC4NxaeShAEDM=";
+    private final String SECRET_KEY = "your_secret_key";
     private final long EXPIRATION_TIME = 1000 * 60 * 60;
 
 
