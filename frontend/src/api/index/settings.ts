@@ -5,12 +5,10 @@ import axios, {
 } from "axios";
 import Cookies from "js-cookie";
 
-
 const BASE_URL = "http://localhost:8080";
 
-
 export const $authHost = axios.create({
-  baseURL: BASE_URL
+  baseURL: BASE_URL,
 });
 
 interface IAxiosRequestConfig extends AxiosRequestConfig {
