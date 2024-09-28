@@ -1,9 +1,8 @@
 import { Card, Radio, Select, theme } from "antd";
-import { setTheme } from "../../store/settings/settingsSlice";
+import { setTheme } from "../../store/reducers/settings/settingsSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
-import { setLanguage } from "../../store/settings/settingsSlice";
-
+import { setLanguage } from "../../store/reducers/settings/settingsSlice";
 
 const { Option } = Select;
 

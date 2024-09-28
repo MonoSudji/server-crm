@@ -8,8 +8,9 @@ export interface SettingsState {
   language: string;
 }
 
+
 const initialState: SettingsState = {
-  themeIsDark: THEME_IS_DARK ? Boolean(THEME_IS_DARK) : false,
+  themeIsDark: THEME_IS_DARK === "true" ? true : false,
   language: LANGUAGE ? LANGUAGE : "Русский",
 };
 

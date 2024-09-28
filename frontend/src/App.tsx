@@ -3,9 +3,10 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/routes";
 import { useAppSelector } from "./hooks/useAppSelector";
 
+
 function App() {
     const themeIsDark = useAppSelector((state) => state.settings.themeIsDark);
-
+    
     return (
         <ConfigProvider
             theme={{
