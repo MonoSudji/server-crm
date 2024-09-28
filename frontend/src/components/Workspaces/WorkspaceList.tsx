@@ -1,42 +1,24 @@
 import { FC } from "react";
 import WorkspaceControls from "./WorkspaceControls";
 import WorkspaceListItem from "./WorkspaceListItem";
+import { useAppSelector } from "../../hooks/useAppSelector";
 
 interface IWorkSpaceList {
-  onOpenModal: () => void;
+  onOpenModal: (projectId: number) => void;
 }
 
 const WorkspaceList: FC<IWorkSpaceList> = ({ onOpenModal }) => {
-  const projectData = [
-    {
-      id: 1,
-      name: "Byte Space",
-      description: "Реализация системы управления проектами для Хакатона",
-      priority: 5,
-      user_id: null,
-    },
-    {
-      id: 2,
-      name: "Девелоника",
-      description: "Реализация системы управления проектами для Хакатона",
-      priority: 5,
-      user_id: null,
-    },
-    {
-      id: 3,
-      name: "Яндекс",
-      description: "Реализация системы управления проектами для Хакатона",
-      priority: 5,
-      user_id: null,
-    },
-  ];
+  const { project } = useAppSelector((state) => state.project);
 
   return (
     <div className="flex flex-col gap-12 w-full">
-      {projectData.map((ss) => (
+      {project.map((ss) => (
         <>
           <WorkspaceControls name={ss.name} />
-          <WorkspaceListItem id={ss.id} onOpenModal={onOpenModal} />
+          <WorkspaceListItem
+            id={ss.id!}
+            onOpenModal={() => onOpenModal(ss.id!)}
+          />
         </>
       ))}
     </div>

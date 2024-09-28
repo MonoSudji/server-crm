@@ -1,10 +1,11 @@
 import { IWorkspace } from "../models/workspace-model";
-import { $authHost } from "./index/settings";
+import { $authHost, $host } from "./index/settings";
+import { AxiosResponse } from "axios";
 
 const workspaceService = {
-  getWorkspaces: async (): Promise<IWorkspace[]> => {
-    const response = await $authHost.get<IWorkspace[]>("/project");
-    return response.data;
+  getWorkspaces: async (): Promise<AxiosResponse<IWorkspace[]>> => {
+    const response = await $host.get<IWorkspace[]>("/api/project");
+    return response;
   },
 
   getWorkspace: async (id: number): Promise<IWorkspace> => {

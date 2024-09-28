@@ -1,20 +1,21 @@
 import { IBoard } from "../models/board-model";
-import { $authHost } from "./index/settings";
+import { $authHost, $host } from "./index/settings";
+import { AxiosResponse } from "axios";
 
 const boardsService = {
-  getBoards: async (): Promise<IBoard[]> => {
-    const response = await $authHost.get<IBoard[]>(`/board`);
-    return response.data;
+  getBoards: async (): Promise<AxiosResponse<IBoard[]>> => {
+    const response = await $host.get<IBoard[]>(`/api/board`);
+    return response;
   },
 
-  getBoard: async (id: number): Promise<IBoard> => {
-    const response = await $authHost.get<IBoard>(`/board/${id}`);
-    return response.data;
+  getBoard: async (id: number): Promise<AxiosResponse<IBoard>> => {
+    const response = await $host.get<IBoard>(`/api/board/${id}`);
+    return response;
   },
 
-  createBoard: async (boardData: IBoard): Promise<IBoard> => {
-    const response = await $authHost.post<IBoard>("/board", boardData);
-    return response.data;
+  createBoard: async (boardData: IBoard): Promise<AxiosResponse<IBoard>> => {
+    const response = await $host.post<IBoard>("/api/board", boardData);
+    return response;
   },
 
   updateBoard: async (id: number, boardData: IBoard): Promise<IBoard> => {
