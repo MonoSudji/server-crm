@@ -1,20 +1,21 @@
 package com.mono.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.mono.dto.ProjectDto;
 import com.mono.mapper.ProjectMapper;
 import com.mono.models.Project;
 import com.mono.repository.ProjectRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProjectService {
 
-    private final ProjectRepository projectRepository;
-    private final ProjectMapper projectMapper;
+    final ProjectRepository projectRepository;
+    final ProjectMapper projectMapper;
 
     @Autowired
     public ProjectService(ProjectRepository projectRepository, ProjectMapper projectMapper) {

@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/project")
 public class ProjectController {
 
-    private final ProjectService projectService;
+    final ProjectService projectService;
 
     @Autowired
     public ProjectController(ProjectService projectService) {

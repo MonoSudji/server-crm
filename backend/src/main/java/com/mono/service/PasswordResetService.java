@@ -1,20 +1,21 @@
 package com.mono.service;
 
-import com.mono.models.User;
-import com.mono.repository.UserRepo;
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-import java.util.UUID;
+import com.mono.models.User;
+import com.mono.repository.UserRepo;
 
 @Service
 public class PasswordResetService {
 
-    private final UserRepo userRepository;
-    private final EmailService emailService;
-    private final PasswordEncoder passwordEncoder;
+    final UserRepo userRepository;
+    final EmailService emailService;
+    final PasswordEncoder passwordEncoder;
 
     @Autowired
     public PasswordResetService(UserRepo userRepository, EmailService emailService, PasswordEncoder passwordEncoder) {

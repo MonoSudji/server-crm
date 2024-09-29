@@ -22,21 +22,21 @@ import com.mono.service.UserService;
 
 @RestController
 @RequestMapping("/api/auth")
-class AuthController {
+public class AuthController {
 
     final UserService userService;
     final PasswordResetService passwordResetService;
     final JWTUtil jwtUtil;
 
     @Autowired
-    AuthController(UserService userService, PasswordResetService passwordResetService, JWTUtil jwtUtil) {
+    public AuthController(UserService userService, PasswordResetService passwordResetService, JWTUtil jwtUtil) {
         this.userService = userService;
         this.passwordResetService = passwordResetService;
         this.jwtUtil = jwtUtil;
     }
 
     @PostMapping("/register")
-    ResponseEntity<Map<String, Object>> registerUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<Map<String, Object>> registerUser(@RequestBody UserDto userDto) {
         UserDto createdUser = userService.registerUser(userDto);
         
         String token = jwtUtil.generateToken(createdUser.getUsername());
@@ -49,7 +49,7 @@ class AuthController {
     }    
     
     @PostMapping("/login")
-    ResponseEntity<String> loginUser(@RequestBody LoginCredentials loginCredentials) {
+    public ResponseEntity<String> loginUser(@RequestBody LoginCredentials loginCredentials) {
         String token = userService.authenticateUser(loginCredentials);
         if (token != null) {
             return ResponseEntity.ok(token);
@@ -59,19 +59,19 @@ class AuthController {
     }
 
     @PostMapping("/reset-password/initiate")
-    ResponseEntity<String> initiatePasswordReset(@RequestParam String email) {
+    public ResponseEntity<String> initiatePasswordReset(@RequestParam String email) {
         passwordResetService.initiatePasswordReset(email);
         return ResponseEntity.ok("Password reset link sent to your email.");
     }
 
     @PostMapping("/reset-password")
-    ResponseEntity<String> resetPassword(@RequestParam String token, @RequestParam String newPassword) {
+    public ResponseEntity<String> resetPassword(@RequestParam String token, @RequestParam String newPassword) {
         passwordResetService.resetPassword(token, newPassword);
         return ResponseEntity.ok("Password has been reset successfully.");
     }
 
     @GetMapping("/me")
-    ResponseEntity<UserDto> getCurrentUser() {
+    public ResponseEntity<UserDto> getCurrentUser() {
         User user = userService.getCurrentUser();
         UserDto userDto = new UserDto(user.getId(), user.getUsername(), user.getEmail());
         return ResponseEntity.ok(userDto);

@@ -15,31 +15,31 @@ class TaskController {
     final TaskService taskService;
 
     @Autowired
-    TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
 
     @GetMapping
-    ResponseEntity<List<TaskDto>> getTasks() {
+    public ResponseEntity<List<TaskDto>> getTasks() {
         List<TaskDto> tasks = taskService.getAllTasks();
         return new ResponseEntity<>(tasks, HttpStatus.OK);
     }
 
     @PostMapping
-    ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto) {
+    public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto) {
         TaskDto createdTask = taskService.createTask(taskDto);
         return new ResponseEntity<>(createdTask, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<TaskDto> getTaskById(@PathVariable Long id) {
+    public ResponseEntity<TaskDto> getTaskById(@PathVariable Long id) {
         return taskService.getTaskById(id)
                 .map(taskDto -> new ResponseEntity<>(taskDto, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<Void> deleteTask(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

@@ -7,23 +7,23 @@
 //
 //@RestController
 //@RequestMapping("/api/auth")
-//class PasswordResetController {
+//public class PasswordResetController {
 //
 //    final PasswordResetService passwordResetService;
 //
 //    @Autowired
-//    PasswordResetController(PasswordResetService passwordResetService) {
+//    public PasswordResetController(PasswordResetService passwordResetService) {
 //        this.passwordResetService = passwordResetService;
 //    }
 //
 //    @PostMapping("/reset-password/initiate")
-//    ResponseEntity<Void> initiatePasswordReset(@RequestParam String email) {
+//    public ResponseEntity<Void> initiatePasswordReset(@RequestParam String email) {
 //        passwordResetService.initiatePasswordReset(email);
 //        return ResponseEntity.ok().build();
 //    }
 //
 //    @PostMapping("/reset-password/execute")
-//    ResponseEntity<Void> resetPassword(@RequestParam String token, @RequestParam String newPassword) {
+//    public ResponseEntity<Void> resetPassword(@RequestParam String token, @RequestParam String newPassword) {
 //        passwordResetService.resetPassword(token, newPassword);
 //        return ResponseEntity.ok().build();
 //    }

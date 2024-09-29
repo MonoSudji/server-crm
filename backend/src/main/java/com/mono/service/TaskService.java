@@ -1,14 +1,15 @@
 package com.mono.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.mono.dto.TaskDto;
 import com.mono.mapper.TaskMapper;
 import com.mono.models.Task;
 import com.mono.repository.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 class TaskService {
@@ -17,28 +18,28 @@ class TaskService {
     final TaskMapper taskMapper;
 
     @Autowired
-    TaskService(TaskRepository taskRepository, TaskMapper taskMapper) {
+    public TaskService(TaskRepository taskRepository, TaskMapper taskMapper) {
         this.taskRepository = taskRepository;
         this.taskMapper = taskMapper;
     }
 
-    List<TaskDto> getAllTasks() {
+    public List<TaskDto> getAllTasks() {
         return taskRepository.findAll().stream()
                 .map(taskMapper::toDto)
                 .toList();
     }
 
-    TaskDto createTask(TaskDto taskDto) {
+    public TaskDto createTask(TaskDto taskDto) {
         Task task = taskMapper.toEntity(taskDto);
         Task savedTask = taskRepository.save(task);
         return taskMapper.toDto(savedTask);
     }
 
-    Optional<TaskDto> getTaskById(Long id) {
+    public Optional<TaskDto> getTaskById(Long id) {
         return taskRepository.findById(id).map(taskMapper::toDto);
     }
 
-    void deleteTask(Long id) {
+    public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
 }
