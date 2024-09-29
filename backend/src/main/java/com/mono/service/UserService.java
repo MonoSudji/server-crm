@@ -16,7 +16,7 @@ import com.mono.repository.UserRepo;
 import com.mono.security.JWTUtil;
 
 @Service
-class UserService {
+public class UserService {
 
     final UserRepo userRepository;
     final UserMapper userMapper;

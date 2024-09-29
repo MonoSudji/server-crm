@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
-class TaskController {
+public class TaskController {
     final TaskService taskService;
 
     @Autowired

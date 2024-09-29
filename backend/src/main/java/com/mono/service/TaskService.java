@@ -12,7 +12,7 @@ import com.mono.models.Task;
 import com.mono.repository.TaskRepository;
 
 @Service
-class TaskService {
+public class TaskService {
 
     final TaskRepository taskRepository;
     final TaskMapper taskMapper;
