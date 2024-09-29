@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class MyUserDetailsService implements UserDetailsService {
+class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserRepo userRepo;
+    UserRepo userRepo;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
